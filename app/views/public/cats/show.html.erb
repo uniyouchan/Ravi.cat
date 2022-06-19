@@ -1,1 +1,19 @@
-<h1>保護猫一覧</h1>
+<h1>猫情報詳細</h1>
+    <% if @detail.image.attached? %>
+     <%= image_tag @detail.image, size: "100x100" %>
+    <% else %>
+     <%= image_tag 'no_image', size: "100x100" %>
+    <% end %>
+  <p>名前:<%= @detail.name %></p>
+  <p>柄:<%= @detail.pattern %></p>
+  <p>詳細:<%= @detail.introduction %></p>
+  <p>年齢:<%= @detail.age %></p>
+  <p>性別:<%= @detail.gender %></p>
+  <p>病気・検査について:<%= @detail.exam %></p>
+  <p>譲渡可能エリア:<%= @detail.area %></p>
+  <p>猫ちゃんの譲渡費用:<%= @detail.cost %></p>
+  <p>避妊/去勢:<%= @detail.neuter %></p>
+  <p>ワクチン接種<%= @detail.vaccination %></p>
+  <p>保護/飼<%= @detail.from %></p>
+  <% if @detail.customer_id == current_customer.id %>
+  <p><%= link_to "編集", edit_cat_path(@detail.id), class: 'btn-success' %><% end %></p>

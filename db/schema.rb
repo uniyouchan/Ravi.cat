@@ -56,18 +56,18 @@ ActiveRecord::Schema.define(version: 2022_06_09_044144) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "cat_image"
-    t.string "name"
-    t.string "pattern"
-    t.text "introduction"
-    t.integer "age"
-    t.string "gender"
-    t.string "exam"
-    t.string "area"
-    t.integer "cost"
-    t.string "neuter"
-    t.string "vaccination"
-    t.string "from"
-    t.boolean "is_active"
+    t.string "name", null: false
+    t.string "pattern", null: false
+    t.text "introduction", null: false
+    t.string "age", null: false
+    t.string "gender", null: false
+    t.string "exam", null: false
+    t.string "area", null: false
+    t.integer "cost", null: false
+    t.string "neuter", null: false
+    t.string "vaccination", null: false
+    t.string "from", null: false
+    t.integer "customer_id", null: false
   end
 
   create_table "comments", force: :cascade do |t|

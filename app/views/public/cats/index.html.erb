@@ -1,1 +1,11 @@
 <h1>保護猫一覧</h1>
+  <div>
+   <% @cats.each do |cat| %>
+    <% if cat.image.attached? %>
+     <%= image_tag cat.image, size: "100x100" %>
+    <% else %>
+     <%= image_tag 'no_image', size: "100x100" %>
+    <% end %>
+    <%= link_to cat_path(cat.id) do %><%= cat.name %>ちゃん<% end %>
+  </div>
+   <% end %>

@@ -1,1 +1,55 @@
-<h1>保護猫編集画面</h1>
+<h1>猫情報編集</h1>
+   <% form_with model: @cat , method: :patch do |f| %>
+ <div class="field">
+  <%= f.label :cat_image %>
+  <%= f.file_field :cat_image, accept: "image/*" %>
+ </div>
+ <div class="field">
+  <%= f.label :name, "名前" %>
+  <%= f.text_field :name %>
+ </div>
+ <div class="field">
+  <%= f.label :pattern, "柄" %>
+  <%= f.select :pattern, [["白","白"],["黒","黒"],["グレー","グレー"],["茶トラ","茶トラ"],["キジトラ","キジトラ"],["サバトラ","サバトラ"],["ミケ","ミケ"],["サビ","サビ"],["その他","その他"]], include_blank: "選択してください" %>
+ </div>
+ <div class="field">
+  <%= f.label :introduction, "詳細" %>
+  <%= f.text_area :introduction %>
+ </div>
+ <div class="field">
+  <%= f.label :age, "年齢" %>
+  <%= f.select :age, [["0~6ヶ月","0~6ヶ月"],["7~12ヶ月","0~12ヶ月"],["1~3歳","1~3歳"],["4~6歳","4~6歳"],["7~9歳","7~9歳"],["10~15歳","10~15歳"],["15歳以上","15歳以上"],["不明","不明"]], include_blank: "選択してください" %>
+ </div>
+ <div class="field">
+  <%= f.label :gender, "性別" %>
+  <%= f.select :gender, [["男の子","男の子"],["女の子","女の子"]], include_blank: "選択してください" %>
+ </div>
+ <div class="field">
+  <%= f.label :exam, "病気・検査について" %>
+  <%= f.text_area :exam %>
+ </div>
+ <div class="field">
+  <%= f.label :area, "譲渡可能エリア" %>
+  <%= f.select :area, [["北海道","北海道"],["東北","東北"],["南関東","南関東"],["北関東","北関東"],["北陸","北陸"],["東海","東海"],["近畿","近畿"],["中国","中国"],["四国","四国"],["九州","九州"]], include_blank: "選択してください" %>
+ </div>
+ <div class="field">
+  <%= f.label :cost, "猫ちゃんの譲渡費用(数字のみ入力)" %>
+  <%= f.text_field :cost %>円
+ </div>
+ <div class="field">
+  <%= f.label :neuter, "避妊/去勢手術について" %>
+  <%= f.select :neuter, [["手術済","手術済"],["手術予定","手術予定"],["未定","未定"]], include_blank: "選択してください" %>
+ </div>
+ <div class="field">
+  <%= f.label :vaccination, "ワクチン接種について" %>
+  <%= f.select :vaccination, [["未接種","未接種"],["1回目終了","1回目終了"],["2回目終了","2回目終了"],["不明","不明"]], include_blank: "選択してください" %>
+ </div>
+ <div class="field">
+  <%= f.label :from, "保護/飼" %>
+  <%= f.select :from, [["保護猫","保護猫"],["飼い猫","飼い猫"]], include_blank: "選択してください" %>
+ </div>
+ <div class="field">
+  <%= f.submit "編集完了", class: "btn btn-succes" %>
+ </div>
+
+ <% end %>

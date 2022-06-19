@@ -6,10 +6,8 @@ Rails.application.routes.draw do
  namespace :admin do
  root to: 'homes#top'
   get "search" => "searches#search"
-  resources :customers, only: [:index,:show,:edit,:update] do
-  end
+  resources :customers
   resources :cats
-  resources :genres, except: [:new, :show]
  end
 
  #会員ログイン
@@ -22,8 +20,6 @@ Rails.application.routes.draw do
  get "search" => "public/searches#search"
  scope module: :public do
   resources :addresses
-  get "/customers/mypage" => "customers#show"
-  get "/customers/edit" => "customers#edit"
   resources :customers
   resources :cats
  end

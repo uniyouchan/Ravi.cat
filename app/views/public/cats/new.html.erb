@@ -1,5 +1,8 @@
 <h1>新規猫登録</h1>
-<%= form_with model: @cat, method: :patch do |f| %>
+<%= form_with model: @cat do |f| %>
+ <div class="field">
+  <%= f.file_field :cat_image, accept: "image/*" %>
+ </div>
  <div class="field">
   <%= f.label :name, "名前" %>
   <%= f.text_field :name %>
