@@ -1,8 +1,8 @@
 <h1>保護猫一覧</h1>
   <div>
    <% @cats.each do |cat| %>
-    <% if cat.image.attached? %>
-     <%= image_tag cat.image, size: "100x100" %>
+    <% if cat.cat_image.attached? %>
+     <%= image_tag cat.cat_image, size: "100x100" %>
     <% else %>
      <%= image_tag 'no_image', size: "100x100" %>
     <% end %>

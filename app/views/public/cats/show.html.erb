@@ -1,6 +1,6 @@
 <h1>猫情報詳細</h1>
-    <% if @detail.image.attached? %>
-     <%= image_tag @detail.image, size: "100x100" %>
+    <% if @detail.cat_image.attached? %>
+     <%= image_tag @detail.cat_image, size: "100x100" %>
     <% else %>
      <%= image_tag 'no_image', size: "100x100" %>
     <% end %>
@@ -11,7 +11,7 @@
   <p>性別:<%= @detail.gender %></p>
   <p>病気・検査について:<%= @detail.exam %></p>
   <p>譲渡可能エリア:<%= @detail.area %></p>
-  <p>猫ちゃんの譲渡費用:<%= @detail.cost %></p>
+  <p>猫ちゃんの譲渡費用:<%= @detail.cost %>円</p>
   <p>避妊/去勢:<%= @detail.neuter %></p>
   <p>ワクチン接種<%= @detail.vaccination %></p>
   <p>保護/飼<%= @detail.from %></p>

@@ -26,11 +26,11 @@ class Public::CatsController < ApplicationController
 
   def edit
    @cat = Cat.find(params[:id])
-    #if @cat.customer == current_customer
-      #render :edit
-    #else
-      #redirect_to cats_path
-    #end
+    if @cat.customer == current_customer
+      render :edit
+    else
+      redirect_to cats_path
+    end
   end
 
   def update
