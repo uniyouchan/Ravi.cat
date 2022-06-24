@@ -19,9 +19,11 @@ Rails.application.routes.draw do
  get 'about' =>'public/homes#about'
  get "search" => "public/searches#search"
  scope module: :public do
+  resources :customers, only: [:show]
   resources :addresses
-  resources :customers
-  resources :cats
+  resources :cats do
+   resources :comments, only: [:create, :destroy]
+  end
  end
 
 end

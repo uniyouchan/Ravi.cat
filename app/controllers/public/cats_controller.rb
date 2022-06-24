@@ -22,6 +22,8 @@ class Public::CatsController < ApplicationController
 
   def show
    @detail = Cat.find(params[:id])
+   @comment = Comment.new
+   @cat = @detail
   end
 
   def edit

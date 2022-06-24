@@ -1,6 +1,7 @@
 class Cat < ApplicationRecord
  has_one_attached :cat_image
  belongs_to :customer
+ has_many :comments, dependent: :destroy
 
  def get_cat_image
   unless cat_image.attached?

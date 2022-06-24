@@ -1,8 +1,8 @@
 <h1>猫情報編集</h1>
-   <% form_with model: @cat , url: cat_path(@cat.id), method: :patch do |f| %>
+   <%= form_with model: @cat , url: cat_path(@cat.id), method: :patch do |f| %>
  <div class="field">
-  <%= f.label :cat_image %>
-  <%= f.file_field :cat_image, accept: "image/*" %>
+  <%= f.label :cat_image, "猫ちゃん写真" %>
+  <%= f.file_field :cat_image, placeholder: "猫ちゃん写真", accept: "image/*" %>
  </div>
  <div class="field">
   <%= f.label :name, "名前" %>

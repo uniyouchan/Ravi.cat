@@ -3,6 +3,8 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :cats, dependent: :destroy
+
+  has_many :cats, dependent: :destroy #猫の画像
+  has_many :comments, dependent: :destroy #コメント
 
 end

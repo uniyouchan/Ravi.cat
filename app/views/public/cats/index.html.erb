@@ -6,6 +6,8 @@
     <% else %>
      <%= image_tag 'no_image', size: "100x100" %>
     <% end %>
-    <%= link_to cat_path(cat.id) do %><%= cat.name %>ちゃん<% end %>
+    猫ちゃんの名前：<%= link_to cat_path(cat.id) do %><%= cat.name %><% end %>ちゃん
+    投稿者：<%= cat.customer.name %>さん
+    コメント件数:<%= @cat.comments.count %>
+    <% end %>
   </div>
-   <% end %>
