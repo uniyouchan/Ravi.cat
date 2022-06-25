@@ -3,7 +3,7 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    @cats = @customer.cats
+    @cats = @customer.cats.page(params[:page])
   end
 
   private

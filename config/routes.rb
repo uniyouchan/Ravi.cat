@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :addresses
   resources :cats do
    resources :comments, only: [:create, :destroy]
+   resource :favorites, only: [:create, :destroy]
   end
  end
 

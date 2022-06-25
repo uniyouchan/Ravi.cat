@@ -10,14 +10,14 @@ class Public::CatsController < ApplicationController
     if @cat.save
       redirect_to cat_path(@cat)
     else
-      render :index
+      render :new
     end
   end
 
   def index
    @customer = Customer.find(current_customer.id)
    @cat = Cat.new
-   @cats = Cat.all
+   @cats = Cat.page(params[:page])
   end
 
   def show

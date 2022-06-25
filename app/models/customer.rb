@@ -6,5 +6,6 @@ class Customer < ApplicationRecord
 
   has_many :cats, dependent: :destroy #猫の画像
   has_many :comments, dependent: :destroy #コメント
+  has_many :favorites, dependent: :destroy #いいね機能
 
 end
