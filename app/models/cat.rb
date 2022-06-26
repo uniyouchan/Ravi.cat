@@ -4,6 +4,18 @@ class Cat < ApplicationRecord
  has_many :comments, dependent: :destroy #コメント機能
  has_many :favorites, dependent: :destroy #いいね機能
 
+ validates :name, presence: true
+ validates :pattern, presence: true
+ validates :introduction, presence: true
+ validates :age, presence: true
+ validates :gender, presence: true
+ validates :exam, presence: true
+ validates :area, presence: true
+ validates :cost, presence: true
+ validates :neuter, presence: true
+ validates :vaccination, presence: true
+ validates :from, presence: true
+
 
  def get_cat_image
   unless cat_image.attached?

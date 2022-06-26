@@ -1,5 +1,5 @@
-<%=link_to "about", about_path %>
-<%=link_to "保護猫一覧", cats_path %>
-<%=link_to "新規登録", new_customer_registration_path %>
-<%=link_to "会員ログイン", new_customer_session_path %>
-<%=link_to "管理者ログイン", new_admin_session_path %>
+<%=link_to about_path, class: "nav-link" do %><i class="fas fa-exclamation fa-lg"></i>サイト概要<% end %>
+<%=link_to cats_path, class: "nav-link" do %><i class="fas fa-handshake fa-lg"></i>猫一覧<% end %>
+<%=link_to new_customer_registration_path, class: "nav-link" do %><i class="fas fa-user-plus fa-lg"></i>新規登録<% end %>
+<%=link_to new_customer_session_path, class: "nav-link" do %><i class="fas fa-sign-in-alt fa-lg"></i>会員ログイン<% end %>
+<%=link_to new_admin_session_path, class: "nav-link" do %><i class="fas fa-user-lock fa-lg"></i>管理者ログイン<% end %>

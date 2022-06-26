@@ -1,1 +1,7 @@
 <h1>会員一覧</h1>
+<% @customers.each do |customer| %>
+ <div>
+  ユーザーネーム:<%= link_to admin_customer_path(customer.id) do %><%= customer.name %><% end %>
+  登録している猫の数：<%= customer.cats.count %>
+ </div>
+ <% end %>

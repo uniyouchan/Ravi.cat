@@ -1,6 +1,6 @@
 <h1>新規猫登録</h1>
-
 <%= form_with model: @cat do |f| %>
+<%= render "public/shared/error_messages", resource: @cat %>
  <div class="field">
   <%= f.file_field :cat_image, accept: "image/*" %>
  </div>

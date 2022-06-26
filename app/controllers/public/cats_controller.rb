@@ -15,9 +15,8 @@ class Public::CatsController < ApplicationController
   end
 
   def index
-   @customer = Customer.find(current_customer.id)
    @cat = Cat.new
-   @cats = Cat.page(params[:page])
+   @cats = Cat.order(id: :DESC).page(params[:page]).per(3)
   end
 
   def show

@@ -1,0 +1,15 @@
+<h1>会員情報</h1>
+ <div>
+   <h2>アカウント名：<%= @customer.name %></h2>
+ </div>
+<h1>登録猫一覧</h1>
+ <% @cats.each do |cat| %>
+ <div>
+   <% if cat.cat_image.attached? %>
+     <%= image_tag cat.cat_image, size: "100x100" %>
+    <% else %>
+     <%= image_tag 'no_image', size: "100x100" %>
+    <% end %>
+    猫ちゃんの名前：<%= link_to cat_path(cat.id) do %><%= cat.name %><% end %>ちゃん
+ </div>
+ <% end %>
