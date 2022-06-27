@@ -25,6 +25,16 @@ class Cat < ApplicationRecord
    cat_image.variant(resize_to_limit: [100,100]).processed
  end
 
+ def self.looks(search, word)
+  if search == "perfect_match"
+   @cat = Cat.where("namr LIKE?","#{word}")
+  elsif search == "partial_match"
+   @cat = Cat.where("name LIKE?","%#{word}%")
+  else
+   @cat = Cat.all
+  end
+ end
+
  def favorited_by?(customer)
   favorites.exists?(customer_id: customer.id)
  end

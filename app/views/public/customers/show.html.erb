@@ -1,15 +1,39 @@
-<h1>会員情報</h1>
- <div>
-   <h2>アカウント名：<%= @customer.name %></h2>
+<div class="container">
+ <div class="row">
+  <h1>会員情報</h1>
  </div>
-<h1>登録猫一覧</h1>
- <% @cats.each do |cat| %>
- <div>
-   <% if cat.cat_image.attached? %>
-     <%= image_tag cat.cat_image, size: "100x100" %>
+ <div class="row-md-4">
+  <h2>アカウント名：<%= @customer.name %>さん</h2>
+ </div>
+ <div class="row">
+  <div class="col-sm-6">
+   <h2>登録猫一覧</h2>
+     <% @cats.each do |cat| %>
+    <div>
+     <% if cat.cat_image.attached? %>
+      <%= image_tag cat.cat_image, size: "140x140" %>
+     <% else %>
+      <%= image_tag 'no_image', size: "140x140" %>
+     <% end %>
+     猫ちゃんの名前：<%= link_to cat_path(cat.id) do %><%= cat.name %><% end %>ちゃん
+    </div>
+     <% end %>
+     <%= paginate @cats %>
+  </div>
+
+  <div class="col-sm-6">
+   <h2>お気に入り猫たち</h2>
+    <% @favorites.each do |favorite| %>
+   <div>
+    <% if favorite.cat.cat_image.attached? %>
+     <%= image_tag favorite.cat.cat_image, size: "140x140" %>
     <% else %>
-     <%= image_tag 'no_image', size: "100x100" %>
+     <%= image_tag 'no_image', size: "140x140" %>
     <% end %>
-    猫ちゃんの名前：<%= link_to cat_path(cat.id) do %><%= cat.name %><% end %>ちゃん
+    猫ちゃんの名前：<%= link_to cat_path(favorite.cat.id) do %><%= favorite.cat.name %><% end %>ちゃん
+   </div>
+    <% end %>
+    <%= paginate @favorites %>
+  </div>
  </div>
- <% end %>
+</div>

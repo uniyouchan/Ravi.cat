@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_25_094857) do
+ActiveRecord::Schema.define(version: 2022_06_27_150023) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2022_06_25_094857) do
     t.string "vaccination", null: false
     t.string "from", null: false
     t.integer "customer_id", null: false
+    t.boolean "admin", default: false
   end
 
   create_table "comments", force: :cascade do |t|
@@ -77,6 +78,7 @@ ActiveRecord::Schema.define(version: 2022_06_25_094857) do
     t.integer "cat_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "admin", default: false
   end
 
   create_table "customers", force: :cascade do |t|
@@ -88,6 +90,7 @@ ActiveRecord::Schema.define(version: 2022_06_25_094857) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end

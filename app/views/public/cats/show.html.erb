@@ -1,51 +1,63 @@
-<h1>猫情報詳細</h1>
-    <% if @detail.cat_image.attached? %>
-     <%= image_tag @detail.cat_image, size: "100x100" %>
-    <% else %>
-     <%= image_tag 'no_image', size: "100x100" %>
-    <% end %>
-  <p>名前:<%= @detail.name %></p>
-  <p>柄:<%= @detail.pattern %></p>
-  <p>詳細:<%= @detail.introduction %></p>
-  <p>年齢:<%= @detail.age %></p>
-  <p>性別:<%= @detail.gender %></p>
-  <p>病気・検査について:<%= @detail.exam %></p>
-  <p>譲渡可能エリア:<%= @detail.area %></p>
-  <p>猫ちゃんの譲渡費用:<%= @detail.cost %>円</p>
-  <p>避妊/去勢:<%= @detail.neuter %></p>
-  <p>ワクチン接種:<%= @detail.vaccination %></p>
-  <p>保護/飼:<%= @detail.from %></p>
+<div class="container">
+ <div class="row">
+  <h1>詳細情報</h1>
+ </div>
+ <div class="row">
+  <div class="col-sm-6">
+   <% if @detail.cat_image.attached? %>
+    <%= image_tag @detail.cat_image, size: "500x500" %>
+   <% else %>
+    <%= image_tag 'no_image', size: "100x100" %>
+   <% end %>
+  </div>
+  <div class="col-sm-6">
+   <p>名前:<%= @detail.name %></p>
+   <p>柄:<%= @detail.pattern %></p>
+   <p>詳細:<%= @detail.introduction %></p>
+   <p>年齢:<%= @detail.age %></p>
+   <p>性別:<%= @detail.gender %></p>
+   <p>病気・検査について:<%= @detail.exam %></p>
+   <p>譲渡可能エリア:<%= @detail.area %></p>
+   <p>猫ちゃんの譲渡費用:<%= @detail.cost %>円</p>
+   <p>避妊/去勢:<%= @detail.neuter %></p>
+   <p>ワクチン接種:<%= @detail.vaccination %></p>
+   <p>保護/飼:<%= @detail.from %></p>
   <% if @cat.favorited_by?(current_customer) %>
-  <p>
-   <%= link_to cat_favorites_path(@cat), method: :delete do %>
-   ♥<%= @cat.favorites.count %> いいね
-   <% end %>
-  </p>
+   <p>
+    <%= link_to cat_favorites_path(@cat), method: :delete do %>
+    ♥<%= @cat.favorites.count %> いいね
+    <% end %>
+   </p>
   <% else %>
-  <p>
-   <%= link_to cat_favorites_path(@cat), method: :post do %>
-   ♡<%= @cat.favorites.count %> いいね
-   <% end %>
-  </p>
+   <p>
+    <%= link_to cat_favorites_path(@cat), method: :post do %>
+    ♡<%= @cat.favorites.count %> いいね
+    <% end %>
+   </p>
   <% end %>
 
   <% if @detail.customer_id == current_customer.id %>
-  <p><%= link_to "猫ちゃん情報編集", edit_cat_path(@detail.id), class: 'btn-success' %></p>
-  <p><%= link_to "猫ちゃん情報削除", cat_path(@detail.id), class: 'btn btn-sm btn-danger', method: :delete, data:{confirm: "情報を削除してもいいですか？"} %></p><% end %>
+   <p><%= link_to "猫ちゃん情報編集", edit_cat_path(@detail.id), class: 'btn btn-sm btn-success' %>
+      <%= link_to "猫ちゃん情報削除", cat_path(@detail.id), class: 'btn btn-sm btn-danger', method: :delete, data:{confirm: "情報を削除してもいいですか？"} %></p><% end %>
+  </div>
+ </div>
 
-  <div>
+ <div class="row">
+  <div class="col-4">
    <%= form_with model: [@cat,@comment] do |f| %>
     <%= f.text_area :cat_comment, rows: '5', placeholder: "コメントを書いてください" %>
     <%= f.submit "コメントする" %>
    <% end %>
   </div>
-
-  <div>
+  <div class="col-8">
    <% @cat.comments.each do |comment| %>
-   <%= comment.customer.name %>
-   <%= comment.cat_comment %>
-   <% if comment.customer == current_customer %>
-    <%= link_to "コメント削除", cat_comment_path(comment.cat, comment), class: 'btn btn-sm btn-danger', method: :delete, data:{confirm: "コメントを削除してもいいですか？"} %>
-   <% end %>
+    <div>
+     <%= comment.customer.name %>
+     <%= comment.cat_comment %>
+     <% if comment.customer == current_customer %>
+     <%= link_to "コメント削除", cat_comment_path(comment.cat, comment), class: 'btn btn-sm btn-danger', method: :delete, data:{confirm: "コメントを削除してもいいですか？"} %>
+     <% end %>
+    </div>
    <% end %>
   </div>
+ </div>

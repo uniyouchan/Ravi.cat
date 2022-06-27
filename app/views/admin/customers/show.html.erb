@@ -10,6 +10,6 @@
     <% else %>
      <%= image_tag 'no_image', size: "100x100" %>
     <% end %>
-    猫ちゃんの名前：<%= link_to cat_path(cat.id) do %><%= cat.name %><% end %>ちゃん
+    猫ちゃんの名前：<%= link_to admin_cat_path(cat.id) do %><%= cat.name %><% end %>ちゃん
  </div>
  <% end %>

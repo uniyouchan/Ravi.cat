@@ -1,4 +1,5 @@
 class Public::CatsController < ApplicationController
+  before_action :authenticate_customer!
 
   def new
    @cat = Cat.new
@@ -16,7 +17,8 @@ class Public::CatsController < ApplicationController
 
   def index
    @cat = Cat.new
-   @cats = Cat.order(id: :DESC).page(params[:page]).per(3)
+   @cats = Cat.order(id: :DESC).page(params[:page]).per(10)
+
   end
 
   def show

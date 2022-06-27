@@ -4,10 +4,12 @@ Rails.application.routes.draw do
  sessions: "admin/sessions"
  }
  namespace :admin do
- root to: 'homes#top'
+ root to: 'customers#index'
   get "search" => "searches#search"
   resources :customers
-  resources :cats
+  resources :cats do
+   resources :comments, only: [:create, :destroy]
+  end
  end
 
  #会員ログイン
@@ -15,11 +17,13 @@ Rails.application.routes.draw do
  registrations: "public/registrations",
  sessions: 'public/sessions'
  }
+ post '/guests/guest_sign_in', to: 'public/guests#new_guest'
  root to: 'public/homes#top'
  get 'about' =>'public/homes#about'
  get "search" => "public/searches#search"
  scope module: :public do
-  resources :customers, only: [:show]
+
+  resources :customers
   resources :addresses
   resources :cats do
    resources :comments, only: [:create, :destroy]

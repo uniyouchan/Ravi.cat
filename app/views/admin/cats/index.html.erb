@@ -6,7 +6,7 @@
     <% else %>
      <%= image_tag 'no_image', size: "100x100" %>
     <% end %></br>
-    猫ちゃんの名前：<%= link_to cat_path(cat.id) do %><%= cat.name %><% end %>ちゃん</br>
+    猫ちゃんの名前：<%= link_to admin_cat_path(cat.id) do %><%= cat.name %><% end %>ちゃん</br>
     投稿者：<%= link_to admin_customer_path(cat.customer.id) do %><%= cat.customer.name %><% end %>さん</br>
     コメント件数:<%= @cat.comments.count %></br>
     いいねの数:<%= @cat.favorites.count %></br>

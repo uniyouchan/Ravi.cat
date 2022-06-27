@@ -3,7 +3,8 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    @cats = @customer.cats.page(params[:page])
+    @cats = @customer.cats.order(id: :DESC).page(params[:page]).per(5)
+    @favorites = Favorite.where(customer_id: current_customer.id).order(id: :DESC).page(params[:page]).per(5)
   end
 
   private

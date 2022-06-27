@@ -3,3 +3,4 @@
 <%=link_to new_customer_registration_path, class: "nav-link" do %><i class="fas fa-user-plus fa-lg"></i>新規登録<% end %>
 <%=link_to new_customer_session_path, class: "nav-link" do %><i class="fas fa-sign-in-alt fa-lg"></i>会員ログイン<% end %>
 <%=link_to new_admin_session_path, class: "nav-link" do %><i class="fas fa-user-lock fa-lg"></i>管理者ログイン<% end %>
+<%=link_to guests_guest_sign_in_path, method: :post, class: "nav-link" do  %><i class="fas fa-question fa-lg"></i>ゲストログイン（閲覧用）<% end %>

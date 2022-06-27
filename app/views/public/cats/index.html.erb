@@ -1,15 +1,23 @@
-<h1>猫一覧</h1>
-<% @cats.each do |cat| %>
-  <div>
-    <% if cat.cat_image.attached? %>
-     <%= image_tag cat.cat_image, size: "100x100" %>
-    <% else %>
-     <%= image_tag 'no_image', size: "100x100" %>
-    <% end %></br>
+<div class="container">
+ <div class="row">
+  <h1>掲載猫一覧</h1>
+ </div>
+ <div class="row">
+  <% @cats.each do |cat| %>
+  <div class="col-2">
+   <% if cat.cat_image.attached? %>
+    <%= image_tag cat.cat_image, size: "150x150" %>
+   <% else %>
+    <%= image_tag 'no_image', size: "150x150" %>
+   <% end %>
+  </div>
+  <div class="col-4">
     猫ちゃんの名前：<%= link_to cat_path(cat.id) do %><%= cat.name %><% end %>ちゃん</br>
     投稿者：<%= link_to customer_path(cat.customer.id) do %><%= cat.customer.name %><% end %>さん</br>
-    コメント件数:<%= @cat.comments.count %></br>
-    いいねの数:<%= @cat.favorites.count %></br>
+    コメント件数:<%= cat.comments.count %></br>
+    いいねの数:<%= cat.favorites.count %>
   </div>
-<% end %>
-<%= paginate @cats %>
+  <% end %>
+ </div>
+ <%= paginate @cats %>
+</div>
