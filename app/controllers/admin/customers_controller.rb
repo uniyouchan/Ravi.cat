@@ -3,7 +3,7 @@ class Admin::CustomersController < ApplicationController
 
  def show
   @customer = Customer.find(params[:id])
-  @cats = @customer.cats.page(params[:page])
+  @cats = @customer.cats.order(id: :DESC).page(params[:page]).per(10)
  end
 
  def index

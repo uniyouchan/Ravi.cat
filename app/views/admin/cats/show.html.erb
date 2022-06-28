@@ -1,26 +1,41 @@
-<h1>猫情報詳細</h1>
-    <% if @detail.cat_image.attached? %>
-     <%= image_tag @detail.cat_image, size: "100x100" %>
-    <% else %>
-     <%= image_tag 'no_image', size: "100x100" %>
-    <% end %>
-  <p>名前:<%= @detail.name %></p>
-  <p>柄:<%= @detail.pattern %></p>
-  <p>詳細:<%= @detail.introduction %></p>
-  <p>年齢:<%= @detail.age %></p>
-  <p>性別:<%= @detail.gender %></p>
-  <p>病気・検査について:<%= @detail.exam %></p>
-  <p>譲渡可能エリア:<%= @detail.area %></p>
-  <p>猫ちゃんの譲渡費用:<%= @detail.cost %>円</p>
-  <p>避妊/去勢:<%= @detail.neuter %></p>
-  <p>ワクチン接種:<%= @detail.vaccination %></p>
-  <p>保護/飼:<%= @detail.from %></p>
-  <p><%= link_to "猫ちゃん情報削除", admin_cat_path(@detail.id), class: 'btn btn-sm btn-danger', method: :delete, data:{confirm: "情報を削除してもいいですか？"} %></p>
+<div class="container">
+ <div class="row">
+  <h1>詳細情報</h1>
+ </div>
+ <div class="row">
+  <div class="col-sm-6">
+   <% if @detail.cat_image.attached? %>
+    <%= image_tag @detail.cat_image, size: "500x500" %>
+   <% else %>
+    <%= image_tag 'no_image', size: "500x500" %>
+   <% end %>
+  </div>
+  <div class="col-sm-6">
+   <p>名前:<%= @detail.name %></p>
+   <p>柄:<%= @detail.pattern %></p>
+   <p>詳細:<%= @detail.introduction %></p>
+   <p>年齢:<%= @detail.age %></p>
+   <p>性別:<%= @detail.gender %></p>
+   <p>病気・検査について:<%= @detail.exam %></p>
+   <p>譲渡可能エリア:<%= @detail.area %></p>
+   <p>猫ちゃんの譲渡費用:<%= @detail.cost %>円</p>
+   <p>避妊/去勢:<%= @detail.neuter %></p>
+   <p>ワクチン接種:<%= @detail.vaccination %></p>
+   <p>保護/飼:<%= @detail.from %></p>
+   <p><%= link_to "猫ちゃん情報削除", admin_cat_path(@detail.id), class: 'btn btn-sm btn-danger', method: :delete, data:{confirm: "情報を削除してもいいですか？"} %></p>
+  </div>
+ </div>
 
-  <% @cat.comments.each do |comment| %>
-   <div>
-   <%= comment.customer.name %>
-   <%= comment.cat_comment %>
-    <%= link_to "コメント削除", cat_comment_path(comment.cat, comment), class: 'btn btn-sm btn-danger', method: :delete, data:{confirm: "コメントを削除してもいいですか？"} %>
+  <div class="row">
+   <div class="col-8">
+    <% @cat.comments.each do |comment| %>
+     <div>
+      <%= comment.customer.name %>
+      <%= comment.cat_comment %>
+      <%= link_to "コメント削除", cat_comment_path(comment.cat, comment), class: 'btn btn-sm btn-danger', method: :delete, data:{confirm: "コメントを削除してもいいですか？"} %>
+     </div>
+    <% end %>
    </div>
-  <% end %>
+  </div>
+ </div>
+

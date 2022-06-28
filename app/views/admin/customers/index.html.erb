@@ -1,8 +1,14 @@
-<h1>会員一覧</h1>
-<% @customers.each do |customer| %>
- <div>
-  ユーザーネーム:<%= link_to admin_customer_path(customer.id) do %><%= customer.name %><% end %>
-  登録している猫の数：<%= customer.cats.count %>
-  <%= link_to "ユーザー削除", admin_customer_path(customer), class: 'btn btn-sm btn-danger', method: :delete, data:{confirm: "削除してもいいですか？"} %>
+<div class="container">
+ <div class="row">
+  <h1>会員一覧</h1>
  </div>
- <% end %>
+ <div class="row">
+  <% @customers.each do |customer| %>
+   <div class="col-sm-12">
+    ユーザーネーム:<%= link_to admin_customer_path(customer.id) do %><%= customer.name %><% end %>
+    登録している猫の数：<%= customer.cats.count %>
+    <%= link_to "ユーザー削除", admin_customer_path(customer), class: 'btn btn-sm btn-danger', method: :delete, data:{confirm: "削除してもいいですか？"} %>
+   </div>
+    <% end %>
+ </div>
+</div>

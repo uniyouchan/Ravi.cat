@@ -2,7 +2,7 @@ class Admin::CatsController < ApplicationController
   before_action :authenticate_admin!
 def index
  @cat = Cat.new
- @cats = Cat.order(id: :DESC).page(params[:page]).per(5)
+ @cats = Cat.order(id: :DESC).page(params[:page]).per(10)
 end
 
 def show
