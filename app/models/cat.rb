@@ -27,7 +27,7 @@ class Cat < ApplicationRecord
 
  def self.looks(search, word)
   if search == "perfect_match"
-   @cat = Cat.where("namr LIKE?","#{word}")
+   @cat = Cat.where("name LIKE?","#{word}")
   elsif search == "partial_match"
    @cat = Cat.where("name LIKE?","%#{word}%")
   else
