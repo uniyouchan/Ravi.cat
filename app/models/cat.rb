@@ -3,6 +3,7 @@ class Cat < ApplicationRecord
  has_one_attached :cat_image #画像
  has_many :comments, dependent: :destroy #コメント機能
  has_many :favorites, dependent: :destroy #いいね機能
+ has_many :cat_tags, dependent: :destroy
 
  validates :name, presence: true
  validates :pattern, presence: true

@@ -9,6 +9,10 @@ class Public::CatsController < ApplicationController
    @cat = Cat.new(cat_params)
    @cat.customer_id = current_customer.id
     if @cat.save
+      cat_tags = Vision.get_image_data(@cat.cat_image)
+      cat_tags.each do |cat_tag|
+       @cat.cat_tags.create(name: cat_tag)
+      end
       redirect_to cat_path(@cat)
     else
       render :new

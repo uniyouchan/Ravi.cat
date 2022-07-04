@@ -1,3 +1,6 @@
+<div class="container">
+ <div class="row py-4">
+  <div class="col-6">
 <h1>猫情報編集</h1>
    <%= form_with model: @cat , url: cat_path(@cat.id), method: :patch do |f| %>
  <div class="field">
@@ -49,7 +52,9 @@
   <%= f.select :from, [["保護猫","保護猫"],["飼い猫","飼い猫"]], include_blank: "選択してください" %>
  </div>
  <div class="field">
-  <%= f.submit "編集完了", class: "btn btn-succes" %>
+  <%= f.submit "編集完了", class: "btn brn-sm btn-success" %>
  </div>
-
- <% end %>
+  <% end %>
+  </div>
+ </div>
+</div>

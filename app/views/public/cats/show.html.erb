@@ -1,5 +1,5 @@
 <div class="container">
- <div class="row">
+ <div class="row py-4">
   <h1>詳細情報</h1>
  </div>
  <div class="row">
@@ -9,6 +9,11 @@
    <% else %>
     <%= image_tag 'no_image', size: "500x500" %>
    <% end %>
+   <div>
+      <% @cat.cat_tags.each do |cat_tag| %>
+       <span class="label"><%= cat_tag.name %></span>
+      <% end %>
+   </div>
   </div>
   <div class="col-sm-6">
    <p>名前:<%= @detail.name %></p>
