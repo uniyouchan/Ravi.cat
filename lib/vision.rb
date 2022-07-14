@@ -5,8 +5,10 @@ require 'net/https'
 module Vision
   class << self
     def get_image_data(image_file)
-      # APIのURL作成
+      # APIのURL作成 デプロイ時
       api_url = "https://vision.googleapis.com/v1/images:annotate?key=#{Rails.application.credentials.GOOGLE_API_KEY}"
+      # APIのURL作成　開発環境時
+
 
       # 画像をbase64にエンコード
       dir_tree =  image_file.key.scan(/.{1,#{2}}/)
