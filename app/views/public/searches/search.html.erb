@@ -1,33 +1,39 @@
-<h2>検索結果</h2>
-
-<table class="table table-hover table-inverse">
-  <!--検索対象モデルがCustomerの時 -->
-  <% if @range == "Customer" %>
+<div class="container">
+ <div class="row py-4">
+  <h2>検索結果</h2>
+   <table class="table table-hover table-inverse">
+    <!--検索対象モデルがCustomerの時 -->
+   <% if @range == "Customer" %>
     <tbody>
-      <% @customers.each do |customer| %>
-        <tr>
-          <td>ユーザー名：<%= customer.name %></td>
-        </tr>
-      <% end %>
+     <% @customers.each do |customer| %>
+      <tr>
+       <td>ユーザーネーム:<%= link_to customer_path(customer.id) do %><%= customer.name %><% end %></td>
+       <td>登録している猫の数：<%= customer.cats.count %></td>
+      </tr>
+   <% end %>
     </tbody>
-  <% else %>
+   <% else %>
     <!--検索対象モデルがCustomerではない時(= 検索対象モデルがCatの時) -->
     <tbody>
-      <% @cats.each do |cat| %>
-        <tr>
-          <td><% if cat.cat_image.attached? %>
-               <%= image_tag cat.cat_image, size: "100x100" %>
-              <% else %>
-               <%= image_tag 'no_image', size: "100x100" %>
-              <% end %></td>
-          <td>名前：<%= cat.name %></td>
-          <td>投稿者：<%= cat.customer.name %></td>
-          <td>柄：<%= cat.pattern %></td>
-          <td>説明：<%= cat.introduction %></td>
-          <td>年齢：<%= cat.age %></td>
-          <td>性別：<%= cat.gender %></td>
-        </tr>
-      <% end %>
+     <% @cats.each do |cat| %>
+      <tr>
+       <td>
+        <% if cat.cat_image.attached? %>
+        <%= image_tag cat.cat_image, size: "100x100" %>
+        <% else %>
+        <%= image_tag 'no_image', size: "100x100" %>
+        <% end %>
+       </td>
+        <td>名前：<%= link_to cat_path(cat.id) do %><%= cat.name %><% end %></td>
+        <td>投稿者：<%= link_to customer_path(cat.customer.id) do %><%= cat.customer.name %><% end %>さん</td>
+        <td>柄：<%= cat.pattern %></td>
+        <td>説明：<%= cat.introduction %></td>
+        <td>年齢：<%= cat.age %></td>
+        <td>性別：<%= cat.gender %></td>
+      </tr>
+     <% end %>
     </tbody>
-  <% end %>
-</table>
+   <% end %>
+  </table>
+ </div>
+</div>

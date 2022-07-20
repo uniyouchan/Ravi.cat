@@ -6,8 +6,9 @@ module Vision
   class << self
     def get_image_data(image_file)
       # APIのURL作成 デプロイ時
-      api_url = "https://vision.googleapis.com/v1/images:annotate?key=#{Rails.application.credentials.GOOGLE_API_KEY}"
+      #api_url = "https://vision.googleapis.com/v1/images:annotate?key=#{Rails.application.credentials.GOOGLE_API_KEY}"
       # APIのURL作成　開発環境時
+      api_url = "https://vision.googleapis.com/v1/images:annotate?key=#{ENV['GOOGLE_API_KEY']}"
 
 
       # 画像をbase64にエンコード
