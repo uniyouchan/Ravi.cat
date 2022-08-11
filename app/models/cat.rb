@@ -5,6 +5,7 @@ class Cat < ApplicationRecord
  has_many :favorites, dependent: :destroy #いいね機能
  has_many :cat_tags, dependent: :destroy
 
+ validates :cat_image, presence: true
  validates :name, presence: true
  validates :pattern, presence: true
  validates :introduction, presence: true
