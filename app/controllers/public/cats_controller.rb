@@ -1,6 +1,5 @@
 class Public::CatsController < ApplicationController
   before_action :authenticate_customer!
-
   def new
    @cat = Cat.new
   end

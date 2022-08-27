@@ -25,6 +25,8 @@ Rails.application.routes.draw do
 
   resources :customers
   resources :addresses
+  resources :messages, only: [:create]
+  resources :rooms, only: [:create, :index, :show]
   resources :cats do
    resources :comments, only: [:create, :destroy]
    resource :favorites, only: [:create, :destroy]
