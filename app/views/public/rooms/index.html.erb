@@ -1,0 +1,4 @@
+<%= @another_entries.each do |entry| %>
+ <%= link_to room_path(entry.room) %>
+  <%= link_to customer_path(entry.customer) %>
+   <%= Message.find_by(id: entry.room.message_ids.last)&.body %>

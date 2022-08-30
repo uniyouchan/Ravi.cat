@@ -5,19 +5,18 @@ class Public::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     @cats = @customer.cats.order(id: :DESC).page(params[:page]).per(5)
     @favorites = Favorite.where(customer_id: current_customer.id).order(id: :DESC).page(params[:page]).per(5)
-    @currentCustomerEntry = Entry.where(customer_id: current_customer.id)
-    @customerEntry = Entry.where(customer_id: @customer.id)
+    @current_entry = Entry.where(customer_id: current_customer.id)
+    @another_entry = Entry.where(customer_id: @customer.id)
     unless @customer.id == current_customer.id
-      @currentCustomerEntry.each do |current|
-        @customerEntry.each do |customer|
-          if current.room_id == customer.room_id then
-            @IsRoom = true
-            @roomId = current.room_id
+      @current_entry.each do |current|
+        @another_entry.each do |another|
+          if current.room_id == another.room_id
+            @is_room = true
+            @room_id = current.room_id
           end
         end
       end
-      if @isRoom
-      else
+      unless @is_room
         @room = Room.new
         @entry = Entry.new
       end

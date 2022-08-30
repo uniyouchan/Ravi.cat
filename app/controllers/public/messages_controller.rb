@@ -1,12 +1,20 @@
 class Public::MessagesController < ApplicationController
-  before_action :authenticate_customer!, only: [:create]
+  before_action :authenticate_customer!
 
   def create
-    if Entry.where(customer_id: current_customer.id, room_id: params[:message][:room_id]).present?
-      @message = Message.create(params.require(:message).permit(:customer_id, :content, :room_id).merge(customer_id: current_customer.id))
+    @message = Message.new(message_params)
+    @message.customer_id = current_customer.id
+    if @message.save
+      flash[:alert] = "メッセージを送信しました。"
     else
       flash[:alert] = "メッセージ送信に失敗しました。"
     end
     redirect_to "/rooms/#{@message.room_id}"
+  end
+
+  private
+
+  def message_params
+    params.require(:message).permit(:room_id, :body)
   end
 end

@@ -2,13 +2,11 @@
  <div class="row py-4">
   <h1>会員情報</h1>
  </div>
- <div class="row-md-4">
-  <h2>アカウント名：<%= @customer.name %>さん</h2>
- </div>
  <div class="row">
+  <h2>アカウント名：<%= @customer.name %>さん</h2>
   <% unless @customer.id == current_customer.id %>
-   <% if @isRoom == true %>
-    <p class="customer-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-primary btn-lg">メッセージルームへ</a></p>
+   <% if @is_room == true %>
+    <p class="customer-show-room"><a href="/rooms/<%= @room_id %>" class="btn btn-primary btn-lg">メッセージルームへ</a></p>
    <% else %>
     <%= form_for @room do |f| %>
      <%= fields_for @entry do |e|%>
